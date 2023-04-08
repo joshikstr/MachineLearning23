@@ -1,7 +1,6 @@
 import os.path
 import torch
 from PIL import Image
-from win32api import GetSystemMetrics
 from torchvision import models
 from torchvision import transforms
 import numpy as np
@@ -55,14 +54,14 @@ for i in os.listdir(path):
     result = list([labels[index[0]], percentage[index[0]].item()])
     results_alexnet.append(result)
 
-img_number = np.size(imgs)
+img_number = len(imgs)
 columns = math.ceil(np.sqrt(img_number))
 if img_number > columns*(columns-1):
     rows = 2*(columns)
 else:
     rows = 2*(columns-1)
 
-fig = plt.figure(figsize=(GetSystemMetrics(0), GetSystemMetrics(1)), facecolor='gray')
+fig = plt.figure(figsize=(15, 10), facecolor='gray')
 
 
 def __mod__(a, b):
